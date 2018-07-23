@@ -1,0 +1,32 @@
+{
+  "name": "markdown-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm build && electron .",
+    "build":"webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WinfredWang/markdown-editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WinfredWang/markdown-editor/issues"
+  },
+  "homepage": "https://github.com/WinfredWang/markdown-editor#readme",
+  "devDependencies": {
+    "electron": "^2.0.5",
+    "i": "^0.3.6",
+    "npm": "^6.2.0",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.13.1",
+    "showdown": "^1.8.6"
+  }
+}

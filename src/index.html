@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Editor</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body style="overflow: hidden">
+  <div style="display: flex;">
+    <div class="editor" id="editor">
+      <div id="container" style="width:500px;height:800px;"></div>
+    </div>
+    <div id="preview" style="width:500px;"></div>
+  </div>
+</body>
+
+<script>
+  var nodeRequire = global.require;
+</script>
+<script src="../dist/index.bundle.js"></script>
+<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+  var amdRequire = global.require;
+  global.require = nodeRequire;
+</script>
+
+<script>
+  var path = require('path');
+  function uriFromPath(_path) {
+    var pathName = path.resolve(_path).replace(/\\/g, '/');
+    if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+      pathName = '/' + pathName;
+    }
+    return encodeURI('file://' + pathName);
+  }
+  amdRequire.config({
+    baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
+  });
+  // workaround monaco-css not understanding the environment
+  self.module = undefined;
+  // workaround monaco-typescript not understanding the environment
+  self.process.browser = true;
+  amdRequire(['vs/editor/editor.main'], function () {
+    window.monaco = monaco
+    let ev = document.createEvent('UIEvent')
+    ev.initEvent('MonacoReady', false, false)
+    document.dispatchEvent(ev)
+  });
+</script>
+
+</html>
