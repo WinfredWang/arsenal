@@ -1,0 +1,13 @@
+.spilt-panel {
+    width: 10px;
+    background: #e3e3e3;
+    cursor: ew-resize;
+}
+
+.spilt-panel:hover {
+    background: #d8d4d4;
+}
+
+#preview {
+    overflow: auto;
+}

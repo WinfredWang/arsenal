@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Markdown Editor</title>
-  <link rel="stylesheet" href="index.css">
 </head>
 
 <body style="overflow: hidden">
@@ -12,15 +11,19 @@
     <div class="editor" id="editor">
       <div id="container" style="width:500px;height:800px;"></div>
     </div>
-    <div id="preview" style="width:500px;"></div>
+    <div id="spilt-panel" class="spilt-panel">
+    </div>
+    <div id="preview" style="padding: 10px" class="markdown-body">
+
+    </div>
   </div>
 </body>
 
 <script>
   var nodeRequire = global.require;
 </script>
-<script src="../dist/index.bundle.js"></script>
-<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+<script src="../../dist/index.bundle.js"></script>
+<script src="../../node_modules/monaco-editor/min/vs/loader.js"></script>
 <script>
   var amdRequire = global.require;
   global.require = nodeRequire;
@@ -36,7 +39,7 @@
     return encodeURI('file://' + pathName);
   }
   amdRequire.config({
-    baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
+    baseUrl: uriFromPath(path.join(__dirname, '../../node_modules/monaco-editor/min'))
   });
   // workaround monaco-css not understanding the environment
   self.module = undefined;
